@@ -1,0 +1,60 @@
+[
+  {
+    "frameidx": 0,
+    "action": "swipe",
+    "args": [
+      206,
+      525,
+      411,
+      528
+    ]
+  },
+  {
+    "frameidx": 1,
+    "action": "click_image",
+    "args": [
+      289,
+      563,
+      [
+        189,
+        463,
+        200,
+        200
+      ]
+    ]
+  },
+  {
+    "frameidx": 2,
+    "action": "click_image",
+    "args": [
+      356,
+      382,
+      [
+        256,
+        282,
+        200,
+        200
+      ]
+    ]
+  },
+  {
+    "frameidx": 3,
+    "action": "swipe",
+    "args": [
+      374,
+      668,
+      146,
+      635
+    ]
+  },
+  {
+    "frameidx": 4,
+    "action": "swipe",
+    "args": [
+      443,
+      524,
+      169,
+      489
+    ]
+  }
+]

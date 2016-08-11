@@ -1,0 +1,110 @@
+{
+  "device": {
+    "width": 540, 
+    "height": 960
+  }, 
+  "frames": [
+    {
+      "waittime": 0, 
+      "index": 0, 
+      "status": {
+        "uixml": "0-uidump.xml", 
+        "screen": "0.png", 
+        "adbstatus": {
+          "activity": null
+        }, 
+        "rotation": 0
+      }, 
+      "event": {
+        "action": "swipe", 
+        "args": [
+          206, 
+          525, 
+          411, 
+          528
+        ]
+      }
+    }, 
+    {
+      "waittime": 17.131526947021484, 
+      "index": 1, 
+      "status": {
+        "uixml": "1-uidump.xml", 
+        "screen": "1.png", 
+        "adbstatus": {
+          "activity": null
+        }, 
+        "rotation": 0
+      }, 
+      "event": {
+        "action": "click", 
+        "args": [
+          289, 
+          563
+        ]
+      }
+    }, 
+    {
+      "waittime": 2.827425003051758, 
+      "index": 2, 
+      "status": {
+        "uixml": "2-uidump.xml", 
+        "screen": "2.png", 
+        "adbstatus": {
+          "activity": null
+        }, 
+        "rotation": 0
+      }, 
+      "event": {
+        "action": "click", 
+        "args": [
+          356, 
+          382
+        ]
+      }
+    }, 
+    {
+      "waittime": 3.101055145263672, 
+      "index": 3, 
+      "status": {
+        "uixml": "3-uidump.xml", 
+        "screen": "3.png", 
+        "adbstatus": {
+          "activity": null
+        }, 
+        "rotation": 0
+      }, 
+      "event": {
+        "action": "swipe", 
+        "args": [
+          374, 
+          668, 
+          146, 
+          635
+        ]
+      }
+    }, 
+    {
+      "waittime": 1.3284530639648438, 
+      "index": 4, 
+      "status": {
+        "uixml": "4-uidump.xml", 
+        "screen": "4.png", 
+        "adbstatus": {
+          "activity": null
+        }, 
+        "rotation": 0
+      }, 
+      "event": {
+        "action": "swipe", 
+        "args": [
+          443, 
+          524, 
+          169, 
+          489
+        ]
+      }
+    }
+  ], 
+  "ctime": "Thu Aug 11 21:45:37 2016"
+}
