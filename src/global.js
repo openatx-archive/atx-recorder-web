@@ -9,6 +9,7 @@ var device = {rotated: false},
     frames = {
       data: [],
       current: null,
+      running: false,
       selected: {first: null, last: null},
     },
     screenui = {
@@ -107,6 +108,63 @@ function touchToScreen(o, point) {
   }
 }
 
+// run case via websocket
+var ws;
+function connectWebsocket(){
+  //ws = new WebSocket("ws://127.0.0.1:8000/run");
+  ws = new WebSocket("ws://"+ location.host +"/run");
+  ws.onopen = function(){
+    console.log('WebSocket Closed');
+  }
+  ws.onmessage = function(evt) {
+    var data = JSON.parse(evt.data);
+    switch (data.action) {
+      case 'run_all':
+        frames.current = data.frame;
+        if (frames.running && data.frame < frames.data.length-1) {
+          ws.send(JSON.stringify({'action':'run_all', 'frame':frames.current+1}));
+        } else {
+          frames.running = false;
+        }
+        break;
+      case 'run_step':
+        frames.running = false;
+        break;
+      default:
+    }
+  }
+  ws.onerror = function(err) {
+    console.log(err);
+  }
+  ws.onclose = function(){
+    console.log('WebSocket Closed');
+  }
+}
+
+function runCase(step){
+  var run = function(){
+    frames.running = true;
+    if (step) {
+      ws.send(JSON.stringify({'action':'run_step', 'frame':frames.current}));
+    } else {
+      ws.send(JSON.stringify({'action':'run_all', 'frame':frames.current}));
+    }
+  }
+  if (ws.readyState !== 1) {
+    ws.close();
+    connectWebsocket();
+    setTimeout(function () {
+      run();
+    }, 1000);
+  } else {
+    run();
+  }
+}
+
+function stopRunCase(){
+  frames.running = false;
+}
+
 // all needs to be objects.
 module.exports = {
   device,
@@ -132,6 +190,8 @@ module.exports = {
       dataType: 'json'
     });
   },
+  runCase,
+  stopRunCase,
 }
 
 $(function(){
@@ -167,7 +227,7 @@ $(function(){
         // wait for frames to load into vue.
         setTimeout(function () {
           frames.current = 0;
-        }, 0.5);
+        }, 1000);
       }
     });
   });
@@ -193,4 +253,7 @@ $(function(){
       updateCanvasSize(device);
     }
   });
+
+  // connect WebSocket
+  connectWebsocket();
 });

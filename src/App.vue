@@ -8,6 +8,9 @@
         <ul>
           <!-- <li><button @click="toggleToolbar">ToggleToolbar</button></li> -->
           <li><button @click="saveCase">Save</button></li>
+          <li v-if='frames.running'><button @click="stopRunCase">Stop</button></li>
+          <li v-else><button @click="runCase">Run</button></li>
+          <li><button @click="runCaseStep">RunStep</button></li>
           <li>Current Frame: {{frames.current + 1}}/{{frames.data.length}}</li>
           <li>Show Actions:<input type="checkbox" v-model="screenui.show"/></li>
         </ul>
@@ -70,6 +73,15 @@ export default {
     },
     toggleToolbar: function(){
       this.show_toolbar = !this.show_toolbar;
+    },
+    runCase: function(){
+      global.runCase();
+    },
+    stopRunCase: function(){
+      global.stopRunCase();
+    },
+    runCaseStep: function(){
+      global.runCase(true);
     },
   }
 }
